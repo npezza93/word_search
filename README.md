@@ -1,12 +1,12 @@
 ## Crossword Puzzle Generator and Solver
 
-Currently it can only generate a crossword with random letters in every spot and print it to a file or the screen.
+Currently it can only generate a 2D or 3D crossword with random letters in every spot and print it to a file or the screen.
 
 ```ruby
-❯ plane = Plane.new(5,5)
+❯ plane = CrosswordPuzzler::Plane.new(5,5)
 # To traverse the cartesian plane:
 ❯ plane[0][3]
-=> #<Point:0x007fb4d0e10028 @letter="u", @x=0, @y=3, @z=0>
+=> #<CrosswordPuzzler::Plane::Point:0x007fb4d0e10028 @letter="u", @x=0, @y=3, @z=0>
 ❯ puts plane.to_s
 nvqgy
 uhsit
