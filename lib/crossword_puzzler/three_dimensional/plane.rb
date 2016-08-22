@@ -1,6 +1,6 @@
 module CrosswordPuzzler
-  class Plane
-    class ThreeDimensional < Base
+  module ThreeDimensional
+    class Plane < Plane::Base
       attr_accessor :z
       validates :z, numericality: { greater_than_or_equal_to: 1 }
 

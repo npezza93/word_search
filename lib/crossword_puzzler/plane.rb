@@ -3,11 +3,19 @@ module CrosswordPuzzler
     def initialize(x, y, z = nil)
       obj =
         if z.present?
-          ThreeDimensional.new(x, y, z)
+          ThreeDimensional::Plane.new(x, y, z)
         else
-          TwoDimensional.new(x, y)
+          TwoDimensional::Plane.new(x, y)
         end
       super obj
+    end
+
+    def to_s
+      if invalid?
+        puts errors.full_messages.join("\n")
+      else
+        super
+      end
     end
   end
 end

@@ -1,6 +1,6 @@
 module CrosswordPuzzler
-  class Plane
-    class TwoDimensional < Base
+  module TwoDimensional
+    class Plane < Plane::Base
       def initialize(x, y)
         @x, @y = x, y
 
@@ -9,7 +9,8 @@ module CrosswordPuzzler
         x.times do |x_point|
           y.times do |y_point|
             @plane[x_point] ||= {}
-            @plane[x_point][y_point] = Point.new(x_point, y_point)
+            @plane[x_point][y_point] =
+              Point.new(x_point, y_point)
           end
         end
       end
