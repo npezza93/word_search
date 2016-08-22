@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'crossword_puzzler/version'
+require 'word_searcher/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'crossword_puzzler'
-  spec.version       = CrosswordPuzzler::VERSION
+  spec.name          = 'word_searcher'
+  spec.version       = WordSearcher::VERSION
   spec.authors       = ['npezza93']
   spec.email         = ['npezza93@gmail.com']
 
-  spec.summary       = 'Crossword Puzzler and Solver'
-  spec.description   = 'Makes crosswords and solves them'
+  spec.summary       = 'Word Search Generator and Solver'
+  spec.description   = 'Makes word searches and solves them'
   spec.homepage      = 'https://www.github.com'
   spec.license       = 'MIT'
 

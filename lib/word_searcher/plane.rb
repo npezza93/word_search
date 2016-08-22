@@ -1,4 +1,4 @@
-module CrosswordPuzzler
+module WordSearcher
   class Plane < SimpleDelegator
     def initialize(x, y, z = nil)
       obj =

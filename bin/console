@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'crossword_puzzler'
+require 'word_searcher'
 require 'pry'
+require 'benchmark'
 
 Pry.start

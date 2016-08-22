@@ -1,4 +1,4 @@
-module CrosswordPuzzler
+module WordSearcher
   module ThreeDimensional
     class Plane < Plane::Base
       attr_accessor :z
@@ -10,9 +10,9 @@ module CrosswordPuzzler
         @plane = {}
 
         x.times do |x_point|
+          @plane[x_point] = {}
           y.times do |y_point|
-            @plane[x_point] ||= {}
-            @plane[x_point][y_point] ||= {}
+            @plane[x_point][y_point] = {}
             z.times do |z_point|
               @plane[x_point][y_point][z_point] =
                 Point.new(x_point, y_point, z_point)

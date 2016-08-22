@@ -1,4 +1,4 @@
-module CrosswordPuzzler
+module WordSearcher
   module TwoDimensional
     class Plane < Plane::Base
       def initialize(x, y)
@@ -7,8 +7,8 @@ module CrosswordPuzzler
         @plane = {}
 
         x.times do |x_point|
+          @plane[x_point] = {}
           y.times do |y_point|
-            @plane[x_point] ||= {}
             @plane[x_point][y_point] =
               Point.new(x_point, y_point)
           end

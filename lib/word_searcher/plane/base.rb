@@ -1,4 +1,4 @@
-module CrosswordPuzzler
+module WordSearcher
   class Plane
     class Base
       include ActiveModel::Validations

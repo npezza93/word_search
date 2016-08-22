@@ -1,4 +1,4 @@
-module CrosswordPuzzler
+module WordSearcher
   class WordBank
     attr_accessor :words
 

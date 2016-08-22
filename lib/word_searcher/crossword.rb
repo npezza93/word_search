@@ -1,4 +1,4 @@
-module CrosswordPuzzler
+module WordSearcher
   class Crossword
     include ActiveModel::Validations
     attr_accessor :plane, :word_bank

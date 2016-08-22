@@ -1,4 +1,4 @@
-module CrosswordPuzzler
+module WordSearcher
   module ThreeDimensional
     class Point
       attr_accessor :x, :y, :z, :letter
@@ -8,7 +8,7 @@ module CrosswordPuzzler
         @x = x
         @y = y
         @z = z
-        @letter = letter || ('a'..'z').to_a[rand(26)]
+        @letter = letter || ('a'..'z').to_a[SecureRandom.random_number(26)]
       end
     end
   end

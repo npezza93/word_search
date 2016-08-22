@@ -3,7 +3,7 @@ task default: :spec
 
 task :console do
   require 'pry'
-  require 'crossword_puzzler' # You know what to do.
+  require 'word_searcher'
   ARGV.clear
   Pry.start
 end

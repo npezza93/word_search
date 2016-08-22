@@ -1,4 +1,4 @@
-module CrosswordPuzzler
+module WordSearcher
   module TwoDimensional
     class Point
       attr_accessor :x, :y, :letter
@@ -7,7 +7,7 @@ module CrosswordPuzzler
       def initialize(x, y, letter = nil)
         @x = x
         @y = y
-        @letter = letter || ('a'..'z').to_a[rand(26)]
+        @letter = letter || ('a'..'z').to_a[SecureRandom.random_number(26)]
       end
     end
   end

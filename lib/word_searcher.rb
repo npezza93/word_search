@@ -2,17 +2,17 @@ require 'active_model'
 require 'highline'
 require 'csv'
 
-require 'crossword_puzzler/version'
-require 'crossword_puzzler/plane'
-require 'crossword_puzzler/plane/base'
-require 'crossword_puzzler/three_dimensional/point'
-require 'crossword_puzzler/two_dimensional/point'
-require 'crossword_puzzler/three_dimensional/plane'
-require 'crossword_puzzler/two_dimensional/plane'
-require 'crossword_puzzler/word_bank'
-require 'crossword_puzzler/crossword'
+require 'word_searcher/version'
+require 'word_searcher/plane'
+require 'word_searcher/plane/base'
+require 'word_searcher/three_dimensional/point'
+require 'word_searcher/two_dimensional/point'
+require 'word_searcher/three_dimensional/plane'
+require 'word_searcher/two_dimensional/plane'
+require 'word_searcher/word_bank'
+require 'word_searcher/crossword'
 
-module CrosswordPuzzler
+module WordSearcher
   class << self
     def create(x, y, z = nil)
       Plane.new(x, y, z)

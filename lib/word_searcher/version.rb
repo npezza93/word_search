@@ -1,3 +1,3 @@
-module CrosswordPuzzler
+module WordSearcher
   VERSION = "0.1.0"
 end
