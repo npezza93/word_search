@@ -16,4 +16,12 @@ himyj
 
 # To print to a file(without a filename defaults to 'crossword')
 ❯ plane.print(file_name)
+
+# When printing a 3D crossword there are two spaces between z slices. The top slice is  z= 0.
+❯ puts CrosswordPuzzler::Plane.new(2,2,2).to_s
+rb
+it
+
+zo
+co
 ```
