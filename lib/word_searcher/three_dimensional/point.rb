@@ -8,7 +8,7 @@ module WordSearcher
         @x = x
         @y = y
         @z = z
-        @letter = letter || ('a'..'z').to_a[SecureRandom.random_number(26)]
+        @letter = '_'
       end
     end
   end

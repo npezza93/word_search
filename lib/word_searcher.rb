@@ -1,16 +1,26 @@
 require 'active_model'
+require 'active_support'
+require 'active_support/all'
 require 'highline'
 require 'csv'
+require 'ruby-enum'
 
 require 'word_searcher/version'
 require 'word_searcher/plane'
-require 'word_searcher/plane/base'
-require 'word_searcher/three_dimensional/point'
-require 'word_searcher/two_dimensional/point'
-require 'word_searcher/three_dimensional/plane'
-require 'word_searcher/two_dimensional/plane'
 require 'word_searcher/word_bank'
 require 'word_searcher/crossword'
+
+require 'word_searcher/plane/base'
+
+require 'word_searcher/three_dimensional/plane'
+require 'word_searcher/three_dimensional/point'
+require 'word_searcher/three_dimensional/direction'
+
+require 'word_searcher/two_dimensional/plane'
+require 'word_searcher/two_dimensional/point'
+require 'word_searcher/two_dimensional/direction'
+require 'word_searcher/two_dimensional/generator'
+require 'word_searcher/two_dimensional/position_word'
 
 module WordSearcher
   class << self

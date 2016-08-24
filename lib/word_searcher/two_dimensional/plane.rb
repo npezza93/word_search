@@ -28,6 +28,17 @@ module WordSearcher
       def three_dimensional?
         false
       end
+
+      def add_letters
+        Thread.new do
+          x.times do |x_point|
+            y.times do |y_point|
+              plane[x_point][y_point].letter ||=
+                ('a'..'z').to_a[SecureRandom.random_number(26)]
+            end
+          end
+        end
+      end
     end
   end
 end
