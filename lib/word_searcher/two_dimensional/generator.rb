@@ -10,8 +10,7 @@ module WordSearcher
 
       def perform
         words.each do |word|
-          positioned = false
-          positioned = PositionWord.new(plane, word).perform until positioned
+          PositionWord.new(plane, word).perform
         end
         plane.add_letters
         plane
