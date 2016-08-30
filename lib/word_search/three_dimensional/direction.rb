@@ -1,8 +1,9 @@
-module WordSearcher
+module WordSearch
   module ThreeDimensional
     class Direction
       include Ruby::Enum
 
+      # Standard cardinal directions
       define :N,  [0,   1, 0]
       define :NE, [1,   1, 0]
       define :E,  [1,   0, 0]
@@ -12,6 +13,7 @@ module WordSearcher
       define :W,  [-1,  0, 0]
       define :NW, [-1,  1, 0]
 
+      # cardinal directions with a positive z index (forward)
       define :NF,   [0,   1, 1]
       define :NEF,  [1,   1, 1]
       define :EF,   [1,   0, 1]
@@ -21,6 +23,7 @@ module WordSearcher
       define :WF,   [-1,  0, 1]
       define :NWF,  [-1,  1, 1]
 
+      # cardinal directions with a negative z index (back)
       define :NB,   [0,   1, -1]
       define :NEB,  [1,   1, -1]
       define :EB,   [1,   0, -1]

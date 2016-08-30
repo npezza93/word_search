@@ -1,4 +1,4 @@
-module WordSearcher
+module WordSearch
   class Plane < SimpleDelegator
     def initialize(x, y, z = nil)
       obj =
@@ -7,6 +7,7 @@ module WordSearcher
         else
           TwoDimensional::Plane.new(x, y)
         end
+
       super obj
     end
 

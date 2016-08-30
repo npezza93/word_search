@@ -1,4 +1,4 @@
-module WordSearcher
+module WordSearch
   module ThreeDimensional
     class Point
       attr_accessor :x, :y, :z, :letter
@@ -8,7 +8,7 @@ module WordSearcher
         @x = x
         @y = y
         @z = z
-        @letter = '_'
+        @letter = letter if letter
       end
     end
   end

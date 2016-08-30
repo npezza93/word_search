@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'word_searcher'
+require 'word_search'
 require 'pry'
 require 'benchmark'
 
