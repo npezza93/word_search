@@ -1,4 +1,5 @@
 ## ![Word Search](https://raw.githubusercontent.com/google/material-design-icons/master/action/drawable-xxxhdpi/ic_search_black_18dp.png)Word Search Generator and Solver
+[![Build Status](https://travis-ci.org/npezza93/word_search.svg?branch=master)](https://travis-ci.org/npezza93/word_search)
 
 Currently it can only generate a 2D or 3D word search with random letters in every spot and print it to a file or the screen.
 
