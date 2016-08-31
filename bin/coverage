@@ -1,0 +1,1 @@
+open coverage/index.html
