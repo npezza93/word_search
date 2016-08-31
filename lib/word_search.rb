@@ -12,10 +12,13 @@ require 'word_search/solver'
 
 require 'word_search/plane/base'
 require 'word_search/generator/base'
+require 'word_search/position_word/base'
 
 require 'word_search/three_dimensional/plane'
 require 'word_search/three_dimensional/point'
 require 'word_search/three_dimensional/direction'
+require 'word_search/three_dimensional/generator'
+require 'word_search/three_dimensional/position_word'
 
 require 'word_search/two_dimensional/plane'
 require 'word_search/two_dimensional/point'

@@ -2,7 +2,7 @@ module WordSearch
   class Plane < SimpleDelegator
     def initialize(x, y, z = nil)
       obj =
-        if z.present?
+        if z.present? && z > 1
           ThreeDimensional::Plane.new(x, y, z)
         else
           TwoDimensional::Plane.new(x, y)
