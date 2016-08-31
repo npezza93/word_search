@@ -1,5 +1,5 @@
 require 'bundler/gem_tasks'
-task default: :spec
+require 'rspec/core/rake_task'
 
 task :console do
   require 'pry'
@@ -7,3 +7,7 @@ task :console do
   ARGV.clear
   Pry.start
 end
+
+
+RSpec::Core::RakeTask.new(:spec)
+task default: :spec
