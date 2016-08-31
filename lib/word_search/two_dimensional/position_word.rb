@@ -57,8 +57,8 @@ module WordSearch
       end
 
       def valid_letters?
-        bad_overlap = false
-        intersection_points = 0
+        bad_overlap, intersection_points = false, 0
+
         letters.count.times do |position|
           next if letter_at(position).blank?
 
