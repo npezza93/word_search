@@ -81,6 +81,18 @@ module WordSearch
       def letters
         @letters ||= word.split('')
       end
+
+      def x_at(position)
+        coordinate.x + position * direction.x
+      end
+
+      def y_at(position)
+        coordinate.y + position * direction.y
+      end
+
+      def z_at(position)
+        coordinate.z + position * direction.z
+      end
     end
   end
 end

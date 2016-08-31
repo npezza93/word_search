@@ -21,10 +21,7 @@ module WordSearch
       end
 
       def letter_at(position)
-        plane.dig(
-          coordinate.x + position * direction.x,
-          coordinate.y + position * direction.y
-        ).letter
+        plane.dig(x_at(position), y_at(position)).letter
       end
     end
   end
