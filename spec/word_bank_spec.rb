@@ -25,4 +25,11 @@ describe WordSearch::WordBank do
 
     expect(empty.errors.full_messages).to include('Word bank cannot be empty')
   end
+
+  describe 'invalid file' do
+    it 'will return false for non csv files' do
+      file = Tempfile.new('words').path
+      expect(WordSearch::WordBank.new(file).errors.messages.blank?).to be(false)
+    end
+  end
 end

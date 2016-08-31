@@ -24,6 +24,10 @@ module WordSearch
         end.join("\n\n")
       end
 
+      def two_dimensional?
+        false
+      end
+
       def three_dimensional?
         true
       end
