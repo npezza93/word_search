@@ -1158,7 +1158,6 @@ Style/WordArray:
 AllCops:
   Exclude:
     - 'vendor/**/*'
-    - 'spec/**/*'
     - 'config/**/*'
     - 'db/**/*'
     - 'bin/*'

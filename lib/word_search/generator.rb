@@ -29,6 +29,10 @@ module WordSearch
       end
     end
 
+    def object
+      __getobj__
+    end
+
     private
 
     def can_words_fit?
