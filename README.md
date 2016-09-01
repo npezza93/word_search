@@ -1,4 +1,4 @@
-# ![Word Search](https://raw.githubusercontent.com/google/material-design-icons/master/action/drawable-xxxhdpi/ic_search_black_18dp.png)Word Search Generator and Solver [![Build Status](https://travis-ci.org/npezza93/word_search.svg?branch=master)](https://travis-ci.org/npezza93/word_search)
+# ![Word Search](https://raw.githubusercontent.com/google/material-design-icons/master/action/drawable-xxxhdpi/ic_search_black_18dp.png)Word Search Generator and Solver [![Build Status](https://travis-ci.org/npezza93/word_search.svg?branch=master)](https://travis-ci.org/npezza93/word_search)[![Code Climate](https://codeclimate.com/github/npezza93/word_search/badges/gpa.svg)](https://codeclimate.com/github/npezza93/word_search)[![Test Coverage](https://codeclimate.com/github/npezza93/word_search/badges/coverage.svg)](https://codeclimate.com/github/npezza93/word_search/coverage)
 
 ## Install
 Add WordSearch to your `Gemfile` and `bundle install`:
