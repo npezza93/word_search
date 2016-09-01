@@ -13,7 +13,7 @@ module WordSearch
 
     def to_s
       if invalid?
-        puts errors.full_messages.join("\n")
+        errors.full_messages.join("\n")
       else
         super
       end

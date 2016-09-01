@@ -18,7 +18,7 @@ module WordSearch
     end
 
     def longest_length
-      @longest ||= collect(&:length).max
+      @longest ||= collect(&:length).max.to_i
     end
 
     def longest_words

@@ -11,6 +11,12 @@ describe WordSearch::Plane do
     expect(plane.to_s).to be_a String
   end
 
+  it 'outputs errors if there are any when calling to_s' do
+    plane = WordSearch::Plane.new(1, 5)
+
+    expect(plane.to_s).to eq('X must be greater than or equal to 2')
+  end
+
   describe WordSearch::TwoDimensional::Plane do
     subject { WordSearch::Plane.new(5, 5) }
 
@@ -25,7 +31,7 @@ describe WordSearch::Plane do
     describe 'make from file' do
       subject do
         tempfile = Tempfile.new
-        tempfile << "xx\nxx"
+        tempfile.write "xx\nxx"
         tempfile.rewind
         tempfile
       end
@@ -52,7 +58,7 @@ describe WordSearch::Plane do
     describe 'make from file' do
       subject do
         tempfile = Tempfile.new
-        tempfile << "xx\nxx\n\nxx\nxx\n\nxx\nxx"
+        tempfile.write "xx\nxx\n\nxx\nxx\n\nxx\nxx"
         tempfile.rewind
         tempfile
       end
