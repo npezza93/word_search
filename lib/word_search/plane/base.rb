@@ -8,8 +8,6 @@ module WordSearch
       validates :x, :y, numericality: { greater_than_or_equal_to: 2 }
 
       def print(file_name = nil)
-        return false unless File.file?(file_name || 'crossword')
-
         file = File.open(file_name || 'crossword', 'w')
         file.write(to_s)
         file
