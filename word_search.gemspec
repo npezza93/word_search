@@ -21,15 +21,15 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'activesupport', '>= 5.0'
-  spec.add_dependency 'activemodel', '>= 5.0'
-  spec.add_dependency 'ruby-enum'
+  spec.add_dependency 'activesupport', '< 5.1'
+  spec.add_dependency 'activemodel', '< 5.1'
+  spec.add_dependency 'ruby-enum', '~> 0.5.0'
 
   spec.add_development_dependency 'bundler', '~> 1.11'
   spec.add_development_dependency 'rake', '~> 10.0'
-  spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'pry', '~> 0.10.4'
+  spec.add_development_dependency 'rspec', '~> 3.5'
+  spec.add_development_dependency 'simplecov', '~> 0.12.0'
+  spec.add_development_dependency 'rubocop', '~> 0.42.0'
   spec.add_development_dependency 'codeclimate-test-reporter'
 end
