@@ -8,10 +8,24 @@ describe WordSearch::Solver do
     tempfile
   end
 
+  let(:script) do
+    tempfile = Tempfile.new(['test', '.rb'])
+    tempfile.write "puts 'hi'"
+    tempfile.rewind
+    tempfile
+  end
+
   it 'makes a solver' do
     solver = WordSearch::Solver.new(
       Tempfile.new, 'spec/support/words.csv', plane_file
     )
     expect(solver).to be_a WordSearch::Solver
+  end
+
+  it 'executes a script' do
+    solver = WordSearch::Solver.new(
+      script, 'spec/support/words.csv', plane_file
+    )
+    expect(solver.execute)
   end
 end

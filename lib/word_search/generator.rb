@@ -7,7 +7,7 @@ module WordSearch
     validate :valid_word_bank?
 
     def initialize(file, x, y, z = nil)
-      plane = Plane.new(x, y, z)
+      plane = Plane.make_from_coordinates(x, y, z)
       obj =
         if z.present?
           ThreeDimensional::Generator.new(plane, WordBank.new(file))

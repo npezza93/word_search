@@ -1,6 +1,17 @@
 module WordSearch
   class Plane < SimpleDelegator
-    def initialize(x, y, z = nil)
+    def self.make_from_file(file)
+      obj =
+        if File.read(file).split("\n\n").count > 1
+          ThreeDimensional::Plane.make_from_file(file)
+        else
+          TwoDimensional::Plane.make_from_file(file)
+        end
+
+      new(obj)
+    end
+
+    def self.make_from_coordinates(x, y, z = nil)
       obj =
         if z.present? && z > 1
           ThreeDimensional::Plane.new(x, y, z)
@@ -8,7 +19,7 @@ module WordSearch
           TwoDimensional::Plane.new(x, y)
         end
 
-      super obj
+      new(obj)
     end
 
     def to_s
