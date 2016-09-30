@@ -2,6 +2,7 @@ module WordSearch
   module TwoDimensional
     class Plane < Plane::Base
       def initialize(x, y)
+        @catalog = Catalog.new
         @x, @y = x, y
 
         initialize_plane do |x_point, y_point|
@@ -33,23 +34,29 @@ module WordSearch
         def make_from_file(file)
           string = File.read(file).split("\n").reverse
 
-          return false if string.collect(&:length).uniq.count > 1
+          return false if (x_len = string.collect(&:length).uniq).count > 1 ||
+                          x_len.blank?
 
-          make_word_search(string)
+          make_word_search(x_len, string)
         end
 
         private
 
-        def make_word_search(string)
-          plane = new(string.collect(&:length).uniq.first, string.count)
+        def make_word_search(x_len, string)
+          plane = new(x_len.first, string.count)
 
           string.each_with_index do |row, y|
             row.split('').each_with_index do |letter, x|
-              plane[x][y] = Point.new(x, y, letter)
+              add_to_catalog(plane, plane[x][y] = Point.new(x, y, letter))
             end
           end
 
           plane
+        end
+
+        def add_to_catalog(plane, point)
+          plane.catalog[point.letter] ||= []
+          plane.catalog[point.letter] << point
         end
       end
     end

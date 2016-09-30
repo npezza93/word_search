@@ -3,7 +3,7 @@ module WordSearch
     class Base < Hash
       include ActiveModel::Validations
 
-      attr_accessor :x, :y
+      attr_accessor :x, :y, :catalog
 
       validates :x, :y, numericality: { greater_than_or_equal_to: 2 }
 

@@ -8,6 +8,7 @@ require 'word_search/version'
 require 'word_search/plane'
 require 'word_search/word_bank'
 require 'word_search/generator'
+require 'word_search/catalog'
 require 'word_search/solver'
 
 require 'word_search/plane/base'

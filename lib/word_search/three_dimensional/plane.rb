@@ -5,6 +5,7 @@ module WordSearch
       validates :z, numericality: { greater_than_or_equal_to: 1 }
 
       def initialize(x, y, z)
+        @catalog = Catalog.new
         @x, @y, @z = x, y, z
 
         initialize_plane do |x_point, y_point|
@@ -71,6 +72,7 @@ module WordSearch
             slice.reverse.each_with_index do |row, y|
               row.split('').each_with_index do |letter, x|
                 plane[x][y][z] = Point.new(x, y, z, letter)
+                add_to_catalog(plane, plane[x][y][z])
               end
             end
           end
@@ -82,6 +84,11 @@ module WordSearch
           x = string.flat_map { |row| row.map(&:length) }.uniq.first
           y = string.collect(&:length).uniq.first
           new(x, y, string.count)
+        end
+
+        def add_to_catalog(plane, point)
+          plane.catalog[point.letter] ||= []
+          plane.catalog[point.letter] << point
         end
       end
     end
