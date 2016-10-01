@@ -2,10 +2,16 @@
 title: Word Search Gem
 ---
 
+.fork
+  .block
+    = link_to "https://github.com/npezza93/word_search" do
+      .github-icon
+      Fork on GitHub
+
 .container
   %h1.center Word Search
   %h4.center
-    Easily create and 2D and 3D word searches of any size with any words
+    Easily create and 2D and 3D word searches of any size given a csv of words
 
   %br
   %br
@@ -29,45 +35,52 @@ title: Word Search Gem
   %h3
     Quick Start
   %p
-    Using the supplied Generator class can you up and running in two lines:
+    Using the supplied Generator class you be up and running in a couple lines:
     %pre
       %code
         :preserve
+          require 'word_search'
+
           # You can also add another param, z, to get a 3D word search
           generator = WordSearch::Generator.new('words.csv', 5, 5)
           # Calling #perform will place the words and fill the empty spots
           # with random letters
           generator.perform
-          # Call #print to write the word search to file
+          # Call #print to write the word search to a file
           generator.print("word_search")
 
+  %br
+  %br
 
+  %h3
+    Plane
+  %p
+    You can load up a word search from a file and have access to a couple
+    helpful utilites
   %pre
     %code
       :preserve
-        ❯ plane = WordSearch::Plane.new(5, 5)
-        ❯ plane.add_letters
-        # To traverse the cartesian plane
-        ❯ plane[0][3]
-        => # WordSearch::TwoDimensional::Point @letter="u", @x=0, @y=3
-        ❯ plane.pto_s
+        require 'word_search'
+
+        plane = WordSearch::Plane.make_from_file("word_search")
+        # To find the max of x or y
+        plane.x
+        => 5
+        plane.y
+        => 5
+        # When a plane is generated, all positions by letter are
+        # cataloged into a hash for quick searching.
+        plane.catalog
+        => {"j"=> [Point @letter="j", @x=0, @y=0>],
+            "r"=> [Point @letter="r", @x=1, @y=0>]}
+        # To get all possible traversable directions around a point
+        plane.directions.to_h
+        => { N: [0, 1], NE: [1, 1], E: [1, 0], SE: [1, -1], S: [0, -1],
+             SW: [-1, -1], W: [-1, 0], NW: [-1, 1] }
+        # To print the plane to the screen
+        plane.pto_s
         nvqgy
         uhsit
         zqloh
         muudd
         himyj
-
-        # To print to a file(without a filename defaults to 'crossword')
-        ❯ plane.print(file_name)
-
-        # When printing a 3D crossword there are two spaces between z slices. The top slice is z = 0.
-        ❯ plane = WordSearch::Plane.new(3, 3, 2)
-        ❯ plane.add_letters
-        ❯ plane.pto_s
-        bxv
-        lud
-        agp
-
-        esj
-        era
-        utg
