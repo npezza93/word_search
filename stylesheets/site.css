@@ -387,3 +387,35 @@ h1 {
 
 .center {
   text-align: center; }
+
+.fork .block {
+  justify-content: flex-end;
+  display: flex;
+  flex-direction: row; }
+  .fork .block a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    margin: 7px;
+    margin-right: 13px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    color: rgba(0, 0, 0, 0.5);
+    background: transparent;
+    transition: all 0.5s ease;
+    text-decoration: none; }
+    .fork .block a .github-icon {
+      background-image: url("../images/github.png");
+      width: 25px;
+      height: 25px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-right: 10px;
+      transition: all 0.5s ease; }
+    .fork .block a:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: 2px solid transparent; }
+      .fork .block a:hover .github-icon {
+        background-image: url("../images/github-light.png"); }

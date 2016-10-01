@@ -14,10 +14,17 @@
     <script src="javascripts/all.js"></script>
   </head>
   <body class='index'>
+    <div class='fork'>
+      <div class='block'>
+        <a href="https://github.com/npezza93/word_search"><div class='github-icon'></div>
+        Fork on GitHub
+        </a>
+      </div>
+    </div>
     <div class='container'>
       <h1 class='center'>Word Search</h1>
       <h4 class='center'>
-        Easily create and 2D and 3D word searches of any size with any words
+        Easily create and 2D and 3D word searches of any size given a csv of words
       </h4>
       <br>
       <br>
@@ -36,10 +43,19 @@
         Quick Start
       </h3>
       <p>
-        Using the supplied Generator class can you up and running in two lines:
-        <pre><code># You can also add another param, z, to get a 3D word search&#x000A;generator = WordSearch::Generator.new('words.csv', 5, 5)&#x000A;# Calling #perform will place the words and fill the empty spots&#x000A;# with random letters&#x000A;generator.perform&#x000A;# Call #print to write the word search to file&#x000A;generator.print("word_search")&#x000A;&#x000A;</code></pre>
+        Using the supplied Generator class you be up and running in a couple lines:
+        <pre><code>require 'word_search'&#x000A;&#x000A;# You can also add another param, z, to get a 3D word search&#x000A;generator = WordSearch::Generator.new('words.csv', 5, 5)&#x000A;# Calling #perform will place the words and fill the empty spots&#x000A;# with random letters&#x000A;generator.perform&#x000A;# Call #print to write the word search to a file&#x000A;generator.print("word_search")&#x000A;</code></pre>
       </p>
-      <pre><code>❯ plane = WordSearch::Plane.new(5, 5)&#x000A;❯ plane.add_letters&#x000A;# To traverse the cartesian plane&#x000A;❯ plane[0][3]&#x000A;=> # WordSearch::TwoDimensional::Point @letter="u", @x=0, @y=3&#x000A;❯ plane.pto_s&#x000A;nvqgy&#x000A;uhsit&#x000A;zqloh&#x000A;muudd&#x000A;himyj&#x000A;&#x000A;# To print to a file(without a filename defaults to 'crossword')&#x000A;❯ plane.print(file_name)&#x000A;&#x000A;# When printing a 3D crossword there are two spaces between z slices. The top slice is z = 0.&#x000A;❯ plane = WordSearch::Plane.new(3, 3, 2)&#x000A;❯ plane.add_letters&#x000A;❯ plane.pto_s&#x000A;bxv&#x000A;lud&#x000A;agp&#x000A;&#x000A;esj&#x000A;era&#x000A;utg</code></pre>
+      <br>
+      <br>
+      <h3>
+        Plane
+      </h3>
+      <p>
+        You can load up a word search from a file and have access to a couple
+        helpful utilites
+      </p>
+      <pre><code>require 'word_search'&#x000A;&#x000A;plane = WordSearch::Plane.make_from_file("word_search")&#x000A;# To find the max of x or y&#x000A;plane.x&#x000A;=> 5&#x000A;plane.y&#x000A;=> 5&#x000A;# When a plane is generated, all positions by letter are&#x000A;# cataloged into a hash for quick searching.&#x000A;plane.catalog&#x000A;=> {"j"=> [Point @letter="j", @x=0, @y=0>],&#x000A;    "r"=> [Point @letter="r", @x=1, @y=0>]}&#x000A;# To get all possible traversable directions around a point&#x000A;plane.directions.to_h&#x000A;=> { N: [0, 1], NE: [1, 1], E: [1, 0], SE: [1, -1], S: [0, -1],&#x000A;     SW: [-1, -1], W: [-1, 0], NW: [-1, 1] }&#x000A;# To print the plane to the screen&#x000A;plane.pto_s&#x000A;nvqgy&#x000A;uhsit&#x000A;zqloh&#x000A;muudd&#x000A;himyj</code></pre>
     </div>
   </body>
 </html>
