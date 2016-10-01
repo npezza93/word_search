@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:charset => "utf-8"}/
+    %meta{content: "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no", :name => "viewport"}/
+
+    %script{:src => "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"}
+    %link{:href => "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css", :rel => "stylesheet"}/
+
+    %title= current_page.data.title || "Middleman"
+    %link{:href => "//fonts.googleapis.com/css?family=Lato:300,400", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "//fonts.googleapis.com/css?family=Droid+Sans+Mono", :rel => "stylesheet", :type => "text/css"}/
+
+    = stylesheet_link_tag :site
+    = javascript_include_tag :all
+
+  %body{:class => page_classes}
+    = yield

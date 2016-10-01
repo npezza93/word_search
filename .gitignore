@@ -10,3 +10,4 @@
 /spec/reports/
 /tmp/
 /*.gem
+/docs/.sass-cache
