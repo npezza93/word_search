@@ -11,3 +11,4 @@
 /tmp/
 /*.gem
 /docs/.sass-cache
+/docs/build
