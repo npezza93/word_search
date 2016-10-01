@@ -43,7 +43,7 @@ describe WordSearch::Generator do
 
     it 'prints the plane to a crossword file' do
       output = subject.plane.print
-      expect(output).to be.positive?
+      expect(output).to eq(4)
     end
   end
 
@@ -64,7 +64,7 @@ describe WordSearch::Generator do
 
     it 'prints the plane to a crossword file' do
       output = subject.plane.print
-      expect(output).to be.positive?
+      expect(output).to eq(28)
     end
   end
 end
