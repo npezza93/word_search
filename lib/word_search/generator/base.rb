@@ -4,7 +4,7 @@ module WordSearch
       include ActiveModel::Validations
 
       attr_accessor :plane, :word_bank, :used_coordinates
-      delegate :to_s, :pto_s, :print, to: :plane
+      delegate :to_s, :pto_s, :print, :catalog, to: :plane
 
       def initialize(plane, word_bank)
         @plane = plane

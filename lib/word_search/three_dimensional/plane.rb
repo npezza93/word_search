@@ -49,6 +49,10 @@ module WordSearch
         end
       end
 
+      def directions
+        @directions ||= WordSearch::ThreeDimensional::Direction
+      end
+
       class << self
         def make_from_file(file)
           string = File.read(file).split("\n\n").map(&:split)

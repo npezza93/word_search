@@ -30,6 +30,10 @@ module WordSearch
         [x, y].max
       end
 
+      def directions
+        @directions ||= WordSearch::TwoDimensional::Direction
+      end
+
       class << self
         def make_from_file(file)
           string = File.read(file).split("\n").reverse
