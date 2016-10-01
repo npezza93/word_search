@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
+    <meta charset='utf-8'>
+    <meta content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' name='viewport'>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js'></script>
+    <link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css' rel='stylesheet'>
+    <title>Word Search Gem</title>
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+    <link href="stylesheets/site.css" rel="stylesheet" />
+    <script src="javascripts/all.js"></script>
+  </head>
+  <body class='index'>
+    <div class='container'>
+      <h1 class='center'>Word Search</h1>
+      <h4 class='center'>
+        Easily create and 2D and 3D word searches of any size with any words
+      </h4>
+      <br>
+      <br>
+      <h3>
+        Install
+      </h3>
+      <p>
+        Add word_search to your Gemfile and bundle install:
+        <pre><code>gem 'word_search'</code></pre>
+        Alternatively, you can install the gem from rubygems.org and require it in your script:
+        <pre><code>gem install word_search</code></pre>
+      </p>
+      <br>
+      <br>
+      <h3>
+        Quick Start
+      </h3>
+      <p>
+        Using the supplied Generator class can you up and running in two lines:
+        <pre><code># You can also add another param, z, to get a 3D word search&#x000A;generator = WordSearch::Generator.new('words.csv', 5, 5)&#x000A;# Calling #perform will place the words and fill the empty spots&#x000A;# with random letters&#x000A;generator.perform&#x000A;# Call #print to write the word search to file&#x000A;generator.print("word_search")&#x000A;&#x000A;</code></pre>
+      </p>
+      <pre><code>❯ plane = WordSearch::Plane.new(5, 5)&#x000A;❯ plane.add_letters&#x000A;# To traverse the cartesian plane&#x000A;❯ plane[0][3]&#x000A;=> # WordSearch::TwoDimensional::Point @letter="u", @x=0, @y=3&#x000A;❯ plane.pto_s&#x000A;nvqgy&#x000A;uhsit&#x000A;zqloh&#x000A;muudd&#x000A;himyj&#x000A;&#x000A;# To print to a file(without a filename defaults to 'crossword')&#x000A;❯ plane.print(file_name)&#x000A;&#x000A;# When printing a 3D crossword there are two spaces between z slices. The top slice is z = 0.&#x000A;❯ plane = WordSearch::Plane.new(3, 3, 2)&#x000A;❯ plane.add_letters&#x000A;❯ plane.pto_s&#x000A;bxv&#x000A;lud&#x000A;agp&#x000A;&#x000A;esj&#x000A;era&#x000A;utg</code></pre>
+    </div>
+  </body>
+</html>
