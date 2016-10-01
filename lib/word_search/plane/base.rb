@@ -8,9 +8,7 @@ module WordSearch
       validates :x, :y, numericality: { greater_than_or_equal_to: 2 }
 
       def print(file_name = nil)
-        file = File.open(file_name || 'crossword', 'w')
-        file.write(to_s)
-        file
+        File.open(file_name || 'word_search', 'w') { |f| f.write to_s }
       end
 
       def random_letter
