@@ -14,7 +14,7 @@ class Solution
   end
 
   def plane
-    @plane ||= WordSearch::Plane.make_from_file('crossword')
+    @plane ||= WordSearch::Plane.make_from_file('word_search')
   end
 
   def word_bank
@@ -35,8 +35,8 @@ class Solution
   def find_word(word)
     plane.catalog[word[0]].find do |point|
       directions.find do |direction|
-        next if (spot = find_point(point, word.size - 1, direction)).blank? &&
-                check_direction(spot, word, point, direction)
+        next if (spot = find_point(point, word.size - 1, direction)).blank? ||
+                not_found?(spot, word, point, direction)
 
         @solved[word] = { first: point, last: spot}
         spot
@@ -44,8 +44,8 @@ class Solution
     end
   end
 
-  def check_direction(spot, word, point, direction)
-    spot.letter != word[-1] && double_check(word, point, direction)
+  def not_found?(spot, word, point, direction)
+    !(spot.letter == word[-1] && double_check(word, point, direction))
   end
 
   def find_point(point, move, direction)
