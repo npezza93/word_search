@@ -30,10 +30,10 @@ zqloh
 muudd
 himyj
 
-# To print to a file(without a filename defaults to 'crossword')
+# To print to a file(without a filename defaults to 'word_search')
 ❯ plane.print(file_name)
 
-# When printing a 3D crossword there are two spaces between z slices. The top slice is z = 0.
+# When printing a 3D word search there are two spaces between z slices. The top slice is z = 0.
 ❯ plane = WordSearch::Plane.new(3, 3, 2)
 ❯ plane.add_letters
 ❯ plane.pto_s

@@ -30,8 +30,6 @@ class Solution
       end.values
   end
 
-  # 100 Benches - avg. 1.8195600882917642 sec
-  # 100 Benches - avg. 3.1153619168809383 sec - brute force
   def find_word(word)
     plane.catalog[word[0]].find do |point|
       directions.find do |direction|
