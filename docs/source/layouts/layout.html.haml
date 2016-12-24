@@ -3,19 +3,16 @@
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{content: "IE=edge", "http-equiv" => "X-UA-Compatible"}/
-    %meta{:charset => "utf-8"}/
-    %meta{content: "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no", :name => "viewport"}/
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no", name: "viewport"}/
 
-    %script{:src => "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"}
-    %link{:href => "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css", :rel => "stylesheet"}/
+    %script{src: "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"}
+    %link{href: "//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css", rel: "stylesheet"}/
 
     %title= current_page.data.title || "Middleman"
-    %link{:href => "//fonts.googleapis.com/css?family=Lato:300,400", :rel => "stylesheet", :type => "text/css"}/
-    %link{:href => "//fonts.googleapis.com/css?family=Droid+Sans+Mono", :rel => "stylesheet", :type => "text/css"}/
-    = favicon_tag 'images/word_search.gif'
-
-    = stylesheet_link_tag :site
-    = javascript_include_tag :all
+    = favicon_tag 'images/search.png'
+    = stylesheet_link_tag "//fonts.googleapis.com/css?family=Lato:300,400", "//fonts.googleapis.com/css?family=Droid+Sans+Mono", :site
+    = javascript_include_tag "//use.fontawesome.com/1118bc452f.js", :all
 
   %body{:class => page_classes}
     = yield

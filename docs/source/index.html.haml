@@ -5,7 +5,7 @@ title: Word Search Gem
 .fork
   .block
     = link_to "https://github.com/npezza93/word_search" do
-      .github-icon
+      %i.fa.fa-github
       Fork on GitHub
 
 .container
@@ -23,8 +23,8 @@ title: Word Search Gem
     %pre
       %code
         gem 'word_search'
-
-    Alternatively, you can install the gem from rubygems.org and require it in your script:
+    %p
+      Alternatively, you can install the gem from rubygems.org and require it in your script:
     %pre
       %code
         gem install word_search
@@ -84,3 +84,10 @@ title: Word Search Gem
         zqloh
         muudd
         himyj
+
+#np_logo_container
+  = link_to "https://github.com/npezza93", class: "social-container" do
+    %i.fa.fa-github
+  = image_tag "np_logo.png", id: "np_logo"
+  = link_to "https://www.linkedin.com/in/nick-pezza-02166668", class: "social-container" do
+    %i.fa.fa-linkedin
