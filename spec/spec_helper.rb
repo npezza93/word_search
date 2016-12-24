@@ -1,11 +1,9 @@
-require 'codeclimate-test-reporter'
-require 'simplecov'
-CodeClimate::TestReporter.start
+require "simplecov"
 SimpleCov.start
 
-require 'bundler/setup'
-require 'word_search'
-require 'pry'
+require "bundler/setup"
+require "word_search"
+require "pry"
 
 Bundler.setup
 RSpec.configure do |config|

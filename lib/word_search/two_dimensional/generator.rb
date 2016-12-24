@@ -15,7 +15,7 @@ module WordSearch
           placed = position_word(word).present?
         end
 
-        word_bank.errors.add(word, 'cannot be placed') if placed.blank?
+        word_bank.errors.add(word, "cannot be placed") if placed.blank?
         placed
       end
 

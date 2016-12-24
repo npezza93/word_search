@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-require 'bundler/setup'
-require 'word_search'
-require 'pry'
-require 'benchmark'
+require "bundler/setup"
+require "word_search"
+require "pry"
+require "benchmark"
 
 Pry.start

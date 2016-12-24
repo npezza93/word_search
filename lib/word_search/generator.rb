@@ -42,19 +42,23 @@ module WordSearch
     def words_too_long
       "#{word_bank.longest_words.join(' and ')} "\
       "#{'is'.pluralize(word_bank.longest_words.count)} "\
-      'too long for the word search'
+      "too long for the word search"
     end
 
     def valid_plane?
+      return if plane.valid?
+
       plane.errors.full_messages.each do |msg|
         errors.add(:base, msg)
-      end unless plane.valid?
+      end
     end
 
     def valid_word_bank?
+      return if word_bank.valid?
+
       word_bank.errors.full_messages.each do |msg|
         errors.add(:base, msg)
-      end unless word_bank.valid?
+      end
     end
   end
 end

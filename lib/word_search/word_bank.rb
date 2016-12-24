@@ -30,15 +30,15 @@ module WordSearch
     private
 
     def word_bank
-      errors.add(:base, 'Word bank cannot be empty') if blank?
+      errors.add(:base, "Word bank cannot be empty") if blank?
     end
 
     def valid_file?(file)
-      File.file?(file) && File.extname(file) == '.csv'
+      File.file?(file) && File.extname(file) == ".csv"
     end
 
     def invalid_file
-      errors.add(:file, 'is invalid')
+      errors.add(:file, "is invalid")
       false
     end
   end

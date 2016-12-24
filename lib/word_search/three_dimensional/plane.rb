@@ -74,7 +74,7 @@ module WordSearch
 
           string.each_with_index do |slice, z|
             slice.reverse.each_with_index do |row, y|
-              row.split('').each_with_index do |letter, x|
+              row.split("").each_with_index do |letter, x|
                 plane[x][y][z] = Point.new(x, y, z, letter)
                 add_to_catalog(plane, plane[x][y][z])
               end

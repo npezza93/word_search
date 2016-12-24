@@ -1043,6 +1043,7 @@ Style/SpecialGlobalVars:
 Style/StringLiterals:
   Description: 'Checks if uses of quotes match the configured preference.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-string-literals'
+  EnforcedStyle: double_quotes
   Enabled: true
 
 Style/StringLiteralsInInterpolation:
@@ -1155,12 +1156,14 @@ Style/WordArray:
   Description: 'Use %w or %W for arrays of words.'
   StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-w'
   Enabled: true
+
+Style/EmptyMethod:
+  Enabled: false
+
 AllCops:
   Exclude:
     - 'vendor/**/*'
-    - 'config/**/*'
     - 'db/**/*'
-    - 'bin/*'
-    - 'Gemfile'
     - 'Gemfile.lock'
     - 'Rakefile'
+  TargetRubyVersion: 2.3

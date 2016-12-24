@@ -13,7 +13,7 @@ module WordSearch
       def perform
         return false unless valid?
 
-        word.split('').each do |letter|
+        word.split("").each do |letter|
           place_letter(letter)
           update_coordinates
         end
@@ -79,7 +79,7 @@ module WordSearch
       end
 
       def letters
-        @letters ||= word.split('')
+        @letters ||= word.split("")
       end
 
       def x_at(position)

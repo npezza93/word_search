@@ -50,7 +50,7 @@ module WordSearch
           plane = new(x_len.first, string.count)
 
           string.each_with_index do |row, y|
-            row.split('').each_with_index do |letter, x|
+            row.split("").each_with_index do |letter, x|
               add_to_catalog(plane, plane[x][y] = Point.new(x, y, letter))
             end
           end
