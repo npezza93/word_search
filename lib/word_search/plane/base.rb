@@ -35,6 +35,22 @@ module WordSearch
         puts to_s
       end
 
+      def to_s
+        raise NotImplementedError
+      end
+
+      def total_points
+        raise NotImplementedError
+      end
+
+      def max
+        raise NotImplementedError
+      end
+
+      def directions
+        raise NotImplementedError
+      end
+
       private
 
       def initialize_plane

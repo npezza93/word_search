@@ -28,6 +28,30 @@ module WordSearch
         valid_coordinates? && valid_letters?
       end
 
+      def place_letter
+        raise NotImplementedError
+      end
+
+      def update_coordinates
+        raise NotImplementedError
+      end
+
+      def positive_last_coordinates?
+        raise NotImplementedError
+      end
+
+      def last_coordinates_in_plane?
+        raise NotImplementedError
+      end
+
+      def letter_at
+        raise NotImplementedError
+      end
+
+      def document_position
+        raise NotImplementedError
+      end
+
       private
 
       def write_solution
