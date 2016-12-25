@@ -1,22 +1,27 @@
 module WordSearch
   class PositionWord
     class Base
-      attr_accessor :plane, :word, :direction, :coordinate
+      attr_accessor :plane, :word, :direction, :coordinate, :positions
 
       def initialize(plane, word, direction, coordinate)
         @plane = plane
         @word = word
         @direction = direction
         @coordinate = coordinate
+        @positions = {}
       end
 
       def perform
         return false unless valid?
 
-        word.split("").each do |letter|
+        letters.each_with_index do |letter, index|
           place_letter(letter)
+          document_position(letter, index)
           update_coordinates
         end
+
+        write_solution
+        true
       end
 
       def valid?
@@ -24,6 +29,17 @@ module WordSearch
       end
 
       private
+
+      def write_solution
+        file_name = "solution_#{Digest::MD5.hexdigest(plane.to_s)}"
+        File.open(file_name, "w") do |f|
+          solution = positions.map do |letter, position|
+            "#{letter.split('-')[0]} #{position.values}"
+          end.join("\n")
+
+          f.write solution
+        end
+      end
 
       def last_x
         return @last_x if defined? @last_x

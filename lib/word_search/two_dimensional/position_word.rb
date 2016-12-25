@@ -23,6 +23,12 @@ module WordSearch
       def letter_at(position)
         plane.dig(x_at(position), y_at(position)).letter
       end
+
+      def document_position(letter, index)
+        positions.merge!("#{letter}-#{index}" => {
+          x: coordinate.x, y: coordinate.y
+        })
+      end
     end
   end
 end
