@@ -20,8 +20,7 @@ module WordSearch
           update_coordinates
         end
 
-        write_solution
-        true
+        positions
       end
 
       def valid?
@@ -53,17 +52,6 @@ module WordSearch
       end
 
       private
-
-      def write_solution
-        file_name = "solution_#{Digest::MD5.hexdigest(plane.to_s)}"
-        File.open(file_name, "w") do |f|
-          solution = positions.map do |letter, position|
-            "#{letter.split('-')[0]} #{position.values}"
-          end.join("\n")
-
-          f.write solution
-        end
-      end
 
       def last_x
         return @last_x if defined? @last_x

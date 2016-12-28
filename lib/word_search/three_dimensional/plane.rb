@@ -53,6 +53,12 @@ module WordSearch
         @directions ||= WordSearch::ThreeDimensional::Direction
       end
 
+      def find_next_point(point, direction)
+        dig(
+          point.x + direction[0], point.y + direction[1], point.z + direction[2]
+        )
+      end
+
       class << self
         def make_from_file(file)
           string = File.read(file).split("\n\n").map(&:split)

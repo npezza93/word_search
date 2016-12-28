@@ -34,6 +34,10 @@ module WordSearch
         @directions ||= WordSearch::TwoDimensional::Direction
       end
 
+      def find_next_point(point, direction)
+        dig(point.x + direction[0], point.y + direction[1])
+      end
+
       class << self
         def make_from_file(file)
           string = File.read(file).split("\n").reverse

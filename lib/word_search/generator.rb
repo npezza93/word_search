@@ -23,6 +23,7 @@ module WordSearch
 
       if valid?
         plane.add_letters
+        write_solution
         plane
       else
         false

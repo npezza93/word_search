@@ -35,6 +35,10 @@ module WordSearch
         puts to_s
       end
 
+      def digest
+        Digest::MD5.hexdigest(to_s)
+      end
+
       def to_s
         raise NotImplementedError
       end

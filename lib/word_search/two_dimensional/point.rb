@@ -9,6 +9,10 @@ module WordSearch
         @y = y
         @letter = letter if letter
       end
+
+      def coordinate
+        [x, y]
+      end
     end
   end
 end

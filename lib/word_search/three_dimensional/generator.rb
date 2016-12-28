@@ -21,10 +21,14 @@ module WordSearch
 
       def position_word(word)
         used_coordinates << (coordinate = random_point)
+        position = false
 
         directions.find do |direction|
-          PositionWord.new(plane, word, direction, coordinate).perform
+          position =
+            PositionWord.new(plane, word, direction, coordinate).perform
         end
+
+        position
       end
 
       def random_point

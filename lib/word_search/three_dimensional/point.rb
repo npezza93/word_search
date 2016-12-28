@@ -10,6 +10,10 @@ module WordSearch
         @z = z
         @letter = letter if letter
       end
+
+      def coordinate
+        [x, y, z]
+      end
     end
   end
 end

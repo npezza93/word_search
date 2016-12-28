@@ -3,7 +3,7 @@ module WordSearch
     class Base
       include ActiveModel::Validations
 
-      attr_accessor :plane, :word_bank, :used_coordinates
+      attr_accessor :plane, :word_bank, :used_coordinates, :positions
       delegate :to_s, :pto_s, :print, :catalog, to: :plane
 
       def directions
@@ -14,11 +14,25 @@ module WordSearch
         @plane = plane
         @word_bank = word_bank
         @used_coordinates = []
+        @positions = {}
       end
 
       def perform
         word_bank.each do |word|
-          place_word(word)
+          @positions[word] = place_word(word)
+        end
+      end
+
+      def write_solution
+        file_name = "solution_#{plane.digest}"
+        File.open(file_name, "w") do |f|
+          solution = positions.map do |_word, letter_positions|
+            letter_positions.map do |letter, position|
+              "#{letter.split('-')[0]} #{position.values}"
+            end.join("\n")
+          end.join("\n---\n")
+
+          f.write solution
         end
       end
 
