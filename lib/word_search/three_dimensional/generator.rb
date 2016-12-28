@@ -12,7 +12,7 @@ module WordSearch
       def place_word(word)
         placed = false
         until placed || used_coordinates.uniq.count == plane.total_points
-          placed = position_word(word).present?
+          placed = position_word(word)
         end
 
         word_bank.errors.add(word, "cannot be placed") if placed.blank?
