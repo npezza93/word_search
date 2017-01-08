@@ -1,7 +1,10 @@
+# frozen_string_literal: true
 module WordSearch
   class Plane
     class Base < Hash
       include ActiveModel::Validations
+
+      LETTERS = ("a".."z").to_a
 
       attr_accessor :x, :y, :catalog
 
@@ -12,7 +15,7 @@ module WordSearch
       end
 
       def random_letter
-        ("a".."z").to_a[SecureRandom.random_number(26)]
+        LETTERS.sample
       end
 
       def two_dimensional?
