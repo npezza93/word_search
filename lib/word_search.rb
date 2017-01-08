@@ -11,7 +11,6 @@ require "word_search/word_bank"
 require "word_search/generator"
 require "word_search/catalog"
 require "word_search/solver"
-require "word_search/solution"
 
 require "word_search/plane/base"
 require "word_search/generator/base"

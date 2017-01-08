@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 module WordSearch
   class Solver
-    attr_accessor :script, :word_bank, :plane, :master_positions
+    attr_accessor :script, :word_bank, :plane
 
     def initialize(script, word_list_file, plane_file)
       @script = script
       @word_bank = WordBank.new(word_list_file)
       @plane = Plane.make_from_file(plane_file)
-      @master_positions = {}
     end
 
     def execute
