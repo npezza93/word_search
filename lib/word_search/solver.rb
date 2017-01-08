@@ -1,17 +1,23 @@
 # frozen_string_literal: true
 module WordSearch
   class Solver
-    attr_accessor :script, :word_bank, :plane
+    attr_accessor :script, :word_bank, :plane, :solved
 
     def initialize(script, word_list_file, plane_file)
       @script = script
       @word_bank = WordBank.new(word_list_file)
       @plane = Plane.make_from_file(plane_file)
+      @solved = false
     end
 
-    def execute
-      Benchmark.measure do
-        solution_file = load(script, true)
+    def perform
+      master_solutions # load master solutions so it doesn't effect benchmark
+      bm = benchmark_solution
+
+      if solved
+        bm
+      else
+        "Word Search incorrectly solved"
       end
     end
 
@@ -27,6 +33,20 @@ module WordSearch
     end
 
     private
+
+    def benchmark_solution
+      Benchmark.measure do
+        begin
+          self.solved = execute_users_solution == master_solutions
+        rescue
+          self.solved = false
+        end
+      end
+    end
+
+    def execute_users_solution
+      import_solutions(File.read(JSON.parse(`ruby #{script}`)))
+    end
 
     def import_solutions(solution_array)
       solution_array.split("---").map do |positions|
