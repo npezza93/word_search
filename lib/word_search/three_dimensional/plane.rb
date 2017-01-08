@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module WordSearch
   module ThreeDimensional
     class Plane < Plane::Base

@@ -1147,10 +1147,10 @@ Style/WhileUntilModifier:
   Enabled: true
 
 Style/MutableConstant:
-  Enabled: false
+  Enabled: true
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: true
 
 Style/WordArray:
   Description: 'Use %w or %W for arrays of words.'
