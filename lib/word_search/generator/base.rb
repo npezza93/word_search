@@ -54,8 +54,11 @@ module WordSearch
         position = false
 
         directions.find do |direction|
+          dimension = plane.two_dimensional? ? TwoDimensional : ThreeDimensional
           position =
-            PositionWord.new(plane, word, direction, coordinate).perform
+            dimension::PositionWord.new(
+              plane, word, direction, coordinate
+            ).perform
         end
 
         position
@@ -63,14 +66,6 @@ module WordSearch
 
       def random(number)
         SecureRandom.random_number number
-      end
-
-      def place_word
-        raise NotImplementedError
-      end
-
-      def position_word
-        raise NotImplementedError
       end
 
       def random_point
