@@ -23,7 +23,7 @@ describe WordSearch::Solver do
     expect(solver.perform).to be_a Benchmark::Tms
   end
 
-  it "executes a script" do
+  it "returns an invalid message if answer is incorrect" do
     WordSearch::Solver.any_instance.stubs(
       :master_solutions
     ).returns({ "hi" => { 0 => [1, 1], 1 => [2, 2] } })
@@ -36,5 +36,15 @@ describe WordSearch::Solver do
     )
 
     expect(solver.perform).to be "Word Search incorrectly solved"
+  end
+
+  it "generates solution if solution file not found" do
+    solver = WordSearch::Solver.new(
+      Tempfile.new, "spec/support/solver_words.csv", plane_file
+    )
+
+    expect(solver.master_solutions).to eq(
+      { "hi" => { 0 => [0, 1], 1 => [1, 1] } }
+    )
   end
 end
