@@ -68,7 +68,7 @@
         of each letter to a file in the following format and returns the file path.
         <pre>h [4, 9]&#x000A;e [5, 9]&#x000A;l [6, 9]&#x000A;l [7, 9]&#x000A;o [8, 9]&#x000A;---&#x000A;b [6, 8]&#x000A;y [7, 7]&#x000A;e [8, 6]</pre>
       </p>
-      <pre><code>require "word_search"&#x000A;&#x000A;plane = WordSearch::Solver.new(&#x000A;  "path/to/script", "path/to/word/bank", "path/to/word/search"&#x000A;)&#x000A;solver.perform&#x000A;=> Benchmark::Tms:0x007fd722cc6b58 @cstime=0.07, @cutime=0.44,&#x000A;    @label="", @real=0.5259899999946356, @stime=0.0,&#x000A;    @total=0.51, @utime=0.0&#x000A;# If your script fails or is incorrect a message will appear instead of&#x000A;# the benchmark.&#x000A;</code></pre>
+      <pre><code>require "word_search"&#x000A;&#x000A;plane = WordSearch::Solver.new(&#x000A;  "path/to/script", "path/to/word/bank", "path/to/word/search"&#x000A;)&#x000A;solver.perform&#x000A;=> Benchmark::Tms:0x007fd722cc6b58 @cstime=0.07,&#x000A;    @cutime=0.44, @label="", @real=0.5259899999946356,&#x000A;    @stime=0.0, @total=0.51, @utime=0.0&#x000A;# If your script fails or is incorrect a message will appear instead&#x000A;# of the benchmark.&#x000A;</code></pre>
     </div>
     <div id='np_logo_container'>
       <a href="https://github.com/npezza93" class="social-container"><i class='fa fa-github'></i>

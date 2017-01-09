@@ -438,3 +438,6 @@ h4, p, h3 {
     cursor: pointer; }
     #np_logo_container a i {
       font-size: 30px; }
+
+.hljs-comment, .hljs-quote {
+  color: #79808f !important; }
