@@ -69,7 +69,7 @@ To solve or benchmark your solution script:
 => #<Benchmark::Tms:0x007fd722cc6b58 @cstime=0.07, @cutime=0.44, @label="", @real=0.5259899999946356, @stime=0.0, @total=0.51, @utime=0.0>
 ```
 _NOTE_: Your script should be an executable ruby script that writes the location
-of each letter to a file in the following format:
+of each letter to a file in the following format and returns the file path:
 ```
 h [4, 9]
 e [5, 9]
@@ -81,4 +81,3 @@ b [6, 8]
 y [7, 7]
 e [8, 6]
 ```
-Your executable should also return the path to this file.

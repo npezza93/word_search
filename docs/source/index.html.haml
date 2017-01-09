@@ -85,6 +85,39 @@ title: Word Search Gem
         muudd
         himyj
 
+  %br
+  %br
+
+  %h3
+    Solver
+  %p
+    You can benchmark and check if your solution works by using the Solver class.
+    Your script should be an executable ruby script that writes the location
+    of each letter to a file in the following format and returns the file path.
+    %pre
+      h [4, 9]
+      e [5, 9]
+      l [6, 9]
+      l [7, 9]
+      o [8, 9]
+      ---
+      b [6, 8]
+      y [7, 7]
+      e [8, 6]
+  %pre
+    %code
+      :preserve
+        require 'word_search'
+
+        plane = WordSearch::Solver.new(
+          "path/to/script", "path/to/word/bank", "path/to/word/search"
+        )
+        # To find the max of x or y
+        solver.perform
+        => Benchmark::Tms:0x007fd722cc6b58 @cstime=0.07, @cutime=0.44, @label="", @real=0.5259899999946356, @stime=0.0, @total=0.51, @utime=0.0
+        # If your script fails or is incorrect a message will appear instead of
+        # the benchmark.
+
 #np_logo_container
   = link_to "https://github.com/npezza93", class: "social-container" do
     %i.fa.fa-github
