@@ -7,7 +7,7 @@
 ## Install
 Add WordSearch to your `Gemfile` and `bundle install`:
 
-`gem 'word_search'`
+`gem "word_search"`
 
 Alternatively, you can install the gem from [rubygems.org](https://rubygems.org/):
 
@@ -30,7 +30,7 @@ zqloh
 muudd
 himyj
 
-# To print to a file(without a filename defaults to 'word_search')
+# To print to a file(without a filename defaults to "word_search")
 ❯ plane.print(file_name)
 
 # When printing a 3D word search there are two spaces between z slices. The top slice is z = 0.
@@ -48,7 +48,7 @@ utg
 
 To create plane filled with words supplied by a word bank:
 ```ruby
-❯ generator = WordSearch::Generator.new('words.csv', 5, 5) # or add a z param to get a 3D word search
+❯ generator = WordSearch::Generator.new("words.csv", 5, 5) # or add a z param to get a 3D word search
 ❯ generator.perform
 ❯ generator.word_bank
 => ["word", "hello", "bye"]
@@ -59,3 +59,26 @@ ylcon
 blarz
 yoydt
 ```
+
+To solve or benchmark your solution script:
+```ruby
+❯ solver = WordSearch::Solver.new(
+❯   "path/to/script", "path/to/word/bank", "path/to/word/search"
+❯ )
+❯ solver.perform
+=> #<Benchmark::Tms:0x007fd722cc6b58 @cstime=0.07, @cutime=0.44, @label="", @real=0.5259899999946356, @stime=0.0, @total=0.51, @utime=0.0>
+```
+_NOTE_: Your script should be an executable ruby script that writes the location
+of each letter to a file in the following format:
+```
+h [4, 9]
+e [5, 9]
+l [6, 9]
+l [7, 9]
+o [8, 9]
+---
+b [6, 8]
+y [7, 7]
+e [8, 6]
+```
+Your executable should also return the path to this file.

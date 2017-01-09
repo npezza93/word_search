@@ -1,24 +1,22 @@
 # frozen_string_literal: true
 module WordSearch
   class Solver
-    attr_accessor :script, :word_bank, :plane, :solved
+    attr_accessor :script, :word_bank, :plane, :failed
 
     def initialize(script, word_list_file, plane_file)
       @script = script
       @word_bank = WordBank.new(word_list_file)
       @plane = Plane.make_from_file(plane_file)
-      @solved = false
+      @failed = false
     end
 
     def perform
       master_solutions # load master solutions so it doesn't effect benchmark
       bm = benchmark_solution
 
-      if solved
-        bm
-      else
-        "Word Search incorrectly solved"
-      end
+      return bm if !failed && solved?
+
+      "Word Search incorrectly solved"
     end
 
     def master_solutions
@@ -37,15 +35,20 @@ module WordSearch
     def benchmark_solution
       Benchmark.measure do
         begin
-          self.solved = execute_users_solution == master_solutions
+          users_solution
         rescue
-          self.solved = false
+          self.failed = true
         end
       end
     end
 
-    def execute_users_solution
-      import_solutions(File.read(JSON.parse(`ruby #{script}`)))
+    def users_solution
+      @users_solution ||=
+        import_solutions(File.read(JSON.parse(`ruby #{script}`)))
+    end
+
+    def solved?
+      @word_bank.all? { |word| users_solution[word] == master_solutions[word] }
     end
 
     def import_solutions(solution_array)
@@ -114,7 +117,7 @@ module WordSearch
     def double_check(word, point, direction)
       matching = true
 
-      (word.length - 3).times do |i|
+      (word.length - 2).times do |i|
         matching &&= find_point(point, (1 + i), direction).letter == word[1 + i]
       end
 
