@@ -26,12 +26,12 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activemodel", "< 5.1"
   spec.add_dependency "ruby-enum", "~> 0.6.0"
 
-  spec.add_development_dependency "bundler", "~> 1.13.7"
+  spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "pry", "~> 0.10.4"
   spec.add_development_dependency "rspec", "~> 3.5"
   spec.add_development_dependency "simplecov", "~> 0.12.0"
-  spec.add_development_dependency "mocha", "~> 1.2.1"
+  spec.add_development_dependency "mocha", "~> 1.2"
   spec.add_development_dependency "rubocop", "~> 0.46"
   spec.add_development_dependency "codeclimate-test-reporter", "~> 1.0"
 end
