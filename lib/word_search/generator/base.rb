@@ -24,19 +24,6 @@ module WordSearch
         end
       end
 
-      def write_solution
-        file_name = "solution_#{plane.digest}"
-        File.open(file_name, "w") do |f|
-          solution = positions.map do |_word, letter_positions|
-            letter_positions.map do |letter, position|
-              "#{letter.split('-')[0]} #{position.values}"
-            end.join("\n")
-          end.join("\n---\n")
-
-          f.write solution
-        end
-      end
-
       private
 
       def place_word(word)

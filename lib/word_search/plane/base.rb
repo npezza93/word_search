@@ -38,10 +38,6 @@ module WordSearch
         puts to_s
       end
 
-      def digest
-        Digest::MD5.hexdigest(to_s)
-      end
-
       def to_s
         raise NotImplementedError
       end
@@ -56,6 +52,10 @@ module WordSearch
 
       def directions
         raise NotImplementedError
+      end
+
+      def letter_at(*positions)
+        dig(*positions)
       end
 
       private

@@ -60,13 +60,17 @@ module WordSearch
         )
       end
 
+      def dimension
+        ThreeDimensional
+      end
+
       class << self
-        def make_from_file(file)
+        def make_from_file(file, should_catalog: true)
           string = File.read(file).split("\n\n").map(&:split)
 
           return false unless valid_file?(string)
 
-          make_word_search(string)
+          make_word_search(string, should_catalog: should_catalog)
         end
 
         private
@@ -76,14 +80,14 @@ module WordSearch
             string.flat_map { |row| row.map(&:length) }.uniq.count == 1
         end
 
-        def make_word_search(string)
+        def make_word_search(string, should_catalog: true)
           plane = empty_3d_plane_from_string(string)
 
           string.each_with_index do |slice, z|
             slice.reverse.each_with_index do |row, y|
               row.split("").each_with_index do |letter, x|
                 plane[x][y][z] = Point.new(x, y, z, letter)
-                add_to_catalog(plane, plane[x][y][z])
+                add_to_catalog(plane, plane[x][y][z], should_catalog)
               end
             end
           end
@@ -97,7 +101,9 @@ module WordSearch
           new(x, y, string.count)
         end
 
-        def add_to_catalog(plane, point)
+        def add_to_catalog(plane, point, should_catalog = true)
+          return unless should_catalog
+
           plane.catalog[point.letter] ||= []
           plane.catalog[point.letter] << point
         end

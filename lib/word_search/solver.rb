@@ -1,33 +1,27 @@
 # frozen_string_literal: true
 module WordSearch
   class Solver
-    attr_accessor :script, :word_bank, :plane, :failed
+    attr_accessor :script, :word_bank, :plane, :failed, :benchmark
 
     def initialize(script, word_list_file, plane_file)
       @script = script
       @word_bank = WordBank.new(word_list_file)
-      @plane = Plane.make_from_file(plane_file)
+      @plane = Plane.make_from_file(plane_file, should_catalog: false)
       @failed = false
     end
 
     def perform
-      master_solutions # load master solutions so it doesn't effect benchmark
       bm = benchmark_solution
 
-      return bm if !failed && solved?
+      return(@benchmark = bm) if !failed && solved?
 
       "Word Search incorrectly solved"
     end
 
-    def master_solutions
-      @master_solutions ||=
-        import_solutions(
-          if File.exist?("solution_#{plane.digest}")
-            File.read("solution_#{plane.digest}")
-          else
-            generate_master_solution
-          end
-        )
+    def solved?
+      @word_bank.all? do |word|
+        correctly_found?(word, users_solution[word])
+      end && proper_direction?
     end
 
     private
@@ -47,8 +41,31 @@ module WordSearch
         import_solutions(File.read(JSON.parse(`ruby #{script}`)))
     end
 
-    def solved?
-      @word_bank.all? { |word| users_solution[word] == master_solutions[word] }
+    def correctly_found?(word, positions)
+      word.split("").map.with_index do |letter, index|
+        plane.letter_at(*positions[index]).letter == letter
+      end.inject(:&)
+    end
+
+    def proper_direction?
+      users_solution.all? do |word, positions|
+        values = positions.values
+        direction = reduce_direction(values.pop.zip(*values), word)
+        plane.dimension::Direction.values.include?(direction)
+      end
+    end
+
+    def reduce_direction(values, word)
+      values.map do |direction|
+        gcd = direction.reduce(:gcd)
+        direction.map { |coord| coord / gcd }.uniq
+      end.map do |direction|
+        if (direction = direction.inject(:-)).gcd(word.length) == word.length
+          direction / word.length
+        else
+          direction
+        end
+      end
     end
 
     def import_solutions(solution_array)
@@ -60,68 +77,6 @@ module WordSearch
             end.to_h
         }
       end.reduce({}, :merge)
-    end
-
-    def generate_master_solution
-      word_bank.map do |word|
-        find_word(word)
-      end.join("---")
-    end
-
-    def directions
-      @directions ||=
-        if plane.two_dimensional?
-          WordSearch::TwoDimensional::Direction
-        else
-          WordSearch::ThreeDimensional::Direction
-        end.values
-    end
-
-    def find_word(word)
-      string = ""
-      plane.catalog[word[0]].find do |point|
-        directions.find do |direction|
-          next if (spot = find_point(point, word.size - 1, direction)).blank? ||
-                  not_found?(spot, word, point, direction)
-
-          string = letter_positions(word, direction, point)
-        end
-      end
-
-      string
-    end
-
-    def letter_positions(word, direction, point)
-      solution = ""
-      word.split("").each_with_index do |letter, index|
-        solution += "#{letter} #{point.coordinate}\n"
-        next if index == (word.length - 1)
-
-        point = plane.find_next_point(point, direction)
-      end
-
-      solution
-    end
-
-    def not_found?(spot, word, point, direction)
-      !(spot.letter == word[-1] && double_check(word, point, direction))
-    end
-
-    def find_point(point, move, direction)
-      plane.dig(
-        point.x + (move * direction[0]),
-        point.y + (move * direction[1]),
-      )
-    end
-
-    def double_check(word, point, direction)
-      matching = true
-
-      (word.length - 2).times do |i|
-        matching &&= find_point(point, (1 + i), direction).letter == word[1 + i]
-      end
-
-      matching
     end
   end
 end
