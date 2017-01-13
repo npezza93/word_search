@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 module WordSearch
   class Solver
-    attr_accessor :script, :word_bank, :plane, :failed, :benchmark
+    attr_accessor :script, :word_bank, :plane, :failed, :benchmark,
+                  :word_list_file, :plane_file
 
     def initialize(script, word_list_file, plane_file)
-      @script = script
-      @word_bank = WordBank.new(word_list_file)
-      @plane = Plane.make_from_file(plane_file, should_catalog: false)
-      @failed = false
+      @script         = script
+      @word_list_file = word_list_file
+      @word_bank      = WordBank.new(word_list_file)
+      @plane_file     = plane_file
+      @plane          = Plane.make_from_file(plane_file, should_catalog: false)
+      @failed         = false
     end
 
     def perform
@@ -38,8 +41,9 @@ module WordSearch
     end
 
     def users_solution
-      @users_solution ||=
-        import_solutions(File.read(JSON.parse(`ruby #{script}`)))
+      @users_solution ||= import_solutions(File.read(JSON.parse(
+        `ruby #{script} #{plane_file} #{word_list_file}`
+      )))
     end
 
     def correctly_found?(word, positions)
