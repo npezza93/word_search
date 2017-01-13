@@ -60,10 +60,6 @@ module WordSearch
         )
       end
 
-      def dimension
-        ThreeDimensional
-      end
-
       class << self
         def make_from_file(file, should_catalog: true)
           string = File.read(file).split("\n\n").map(&:split)

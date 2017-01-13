@@ -39,10 +39,6 @@ module WordSearch
         dig(point.x + direction[0], point.y + direction[1])
       end
 
-      def dimension
-        TwoDimensional
-      end
-
       class << self
         def make_from_file(file, should_catalog: true)
           string = File.read(file).split("\n").reverse

@@ -11,9 +11,6 @@ describe WordSearch::Solver do
 
   it "benchmarks a solution" do
     WordSearch::Solver.any_instance.stubs(
-      :master_solutions
-    ).returns({ "hi" => { 0 => [0, 1], 1 => [1, 1] } })
-    WordSearch::Solver.any_instance.stubs(
       :users_solution
     ).returns({ "hi" => { 0 => [0, 1], 1 => [1, 1] } })
 
@@ -24,26 +21,12 @@ describe WordSearch::Solver do
   end
 
   it "returns an invalid message if answer is incorrect" do
-    WordSearch::Solver.any_instance.stubs(
-      :master_solutions
-    ).returns({ "hi" => { 0 => [0, 1], 1 => [1, 1] } })
-    WordSearch::Solver.any_instance.stubs(
-      :users_solution
-    ).returns({})
+    WordSearch::Solver.any_instance.stubs(:users_solution).returns({})
+    WordSearch::Solver.any_instance.stubs(:solved?).returns(false)
 
     solver = WordSearch::Solver.new(
       Tempfile.new, "spec/support/solver_words.csv", plane_file
     )
     expect(solver.perform).to be "Word Search incorrectly solved"
-  end
-
-  it "generates solution if solution file not found" do
-    solver = WordSearch::Solver.new(
-      Tempfile.new, "spec/support/solver_words.csv", plane_file
-    )
-
-    expect(solver.master_solutions).to eq(
-      { "hi" => { 0 => [0, 1], 1 => [1, 1] } }
-    )
   end
 end

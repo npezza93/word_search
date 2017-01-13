@@ -11,6 +11,7 @@ module WordSearch
     end
 
     def perform
+      return if script.blank?
       bm = benchmark_solution
 
       return(@benchmark = bm) if !failed && solved?
@@ -51,7 +52,7 @@ module WordSearch
       users_solution.all? do |word, positions|
         values = positions.values
         direction = reduce_direction(values.pop.zip(*values), word)
-        plane.dimension::Direction.values.include?(direction)
+        plane.directions.values.include?(direction)
       end
     end
 
