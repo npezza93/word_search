@@ -1,6 +1,9 @@
 language: ruby
 rvm:
   - 2.4.0
+install:
+  - gem install rainbow -v '2.2.1'
+  - bundle install
 script:
   - bin/test
   - codeclimate-test-reporter
