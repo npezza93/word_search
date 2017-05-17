@@ -6,4 +6,13 @@ require "word_search"
 require "pry"
 require "benchmark"
 
+def reload!(print = true)
+  puts "Reloading..." if print
+  files = $LOADED_FEATURES.select do |feat|
+    feat =~ /\/word_search\// && feat.exclude?("version")
+  end
+  files.each { |file| load file }
+  true
+end
+
 Pry.start
