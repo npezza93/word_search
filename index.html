@@ -1,83 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
-    <meta content='IE=edge' http-equiv='X-UA-Compatible'>
-    <meta charset='utf-8'>
-    <meta content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' name='viewport'>
-    <script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js'></script>
-    <link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css' rel='stylesheet'>
-    <title>Word Search Gem</title>
-    <link href="images/search.png" rel="icon" type="image/png" />
-    <link href="//fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" /><link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" /><link href="stylesheets/site.css" rel="stylesheet" />
-    <script src="//use.fontawesome.com/1118bc452f.js"></script><script src="javascripts/all.js"></script>
-  </head>
-  <body class='index'>
-    <div class='fork'>
-      <div class='block'>
-        <a href="https://github.com/npezza93/word_search"><i class='fa fa-github'></i>
-        Fork on GitHub
-        </a>
-      </div>
-    </div>
-    <div class='container'>
-      <h1 class='center'>Word Search</h1>
-      <h4 class='center'>
-        Easily create a 2D and 3D word searches of any size given a csv of words
-      </h4>
-      <br>
-      <br>
-      <h3>
-        Install
-      </h3>
-      <p>
-        Add word_search to your Gemfile and bundle install:
-        <pre><code>gem "word_search"</code></pre>
-        <p>
-          Alternatively, you can install the gem from rubygems.org and require it in your script:
-        </p>
-        <pre><code>gem install word_search</code></pre>
-      </p>
-      <br>
-      <br>
-      <h3>
-        Quick Start
-      </h3>
-      <p>
-        Using the supplied Generator class you can be up and running in a couple lines:
-        <pre><code>require "word_search"&#x000A;&#x000A;# You can also add another param, z, to get a 3D word search&#x000A;generator = WordSearch::Generator.new("words.csv", 5, 5)&#x000A;# Calling #perform will place the words and fill the empty spots&#x000A;# with random letters&#x000A;generator.perform&#x000A;# Call #print to write the word search to a file&#x000A;generator.print("word_search")&#x000A;</code></pre>
-      </p>
-      <br>
-      <br>
-      <h3>
-        Plane
-      </h3>
-      <p>
-        You can load up a word search from a file and have access to a couple
-        helpful utilites
-      </p>
-      <pre><code>require "word_search"&#x000A;&#x000A;plane = WordSearch::Plane.make_from_file("word_search")&#x000A;# To find the max of x or y&#x000A;plane.x&#x000A;=> 5&#x000A;plane.y&#x000A;=> 5&#x000A;# When a plane is generated, all positions by letter are&#x000A;# cataloged into a hash for quick searching.&#x000A;plane.catalog&#x000A;=> {"j"=> [Point @letter="j", @x=0, @y=0>],&#x000A;    "r"=> [Point @letter="r", @x=1, @y=0>]}&#x000A;# To get all possible traversable directions around a point&#x000A;plane.directions.to_h&#x000A;=> { N: [0, 1], NE: [1, 1], E: [1, 0], SE: [1, -1], S: [0, -1],&#x000A;     SW: [-1, -1], W: [-1, 0], NW: [-1, 1] }&#x000A;# To print the plane to the screen&#x000A;plane.pto_s&#x000A;nvqgy&#x000A;uhsit&#x000A;zqloh&#x000A;muudd&#x000A;himyj&#x000A;</code></pre>
-      <br>
-      <br>
-      <h3>
-        Solver
-      </h3>
-      <p>
-        You can benchmark and check if your solution works by using the Solver class.
-        Your script should be an executable ruby script that writes the location
-        of each letter to a file in the following format and returns the file path.
-        It should also be able to accept command line arguments for the plane file
-        and the words file, in that order.
-        <pre>h [4, 9]&#x000A;e [5, 9]&#x000A;l [6, 9]&#x000A;l [7, 9]&#x000A;o [8, 9]&#x000A;---&#x000A;b [6, 8]&#x000A;y [7, 7]&#x000A;e [8, 6]</pre>
-      </p>
-      <pre><code>require "word_search"&#x000A;&#x000A;plane = WordSearch::Solver.new(&#x000A;  "path/to/script", "path/to/word/bank", "path/to/word/search"&#x000A;)&#x000A;solver.perform&#x000A;=> Benchmark::Tms:0x007fd722cc6b58 @cstime=0.07,&#x000A;    @cutime=0.44, @label="", @real=0.5259899999946356,&#x000A;    @stime=0.0, @total=0.51, @utime=0.0&#x000A;# If your script fails or is incorrect a message will appear instead&#x000A;# of the benchmark.&#x000A;</code></pre>
-    </div>
-    <div id='np_logo_container'>
-      <a href="https://github.com/npezza93" class="social-container"><i class='fa fa-github'></i>
-      </a>
-      <img src="images/logo.png" id="np_logo" alt="Logo" />
-      <a href="https://www.linkedin.com/in/nick-pezza-02166668" class="social-container"><i class='fa fa-linkedin'></i>
-      </a>
-    </div>
-  </body>
+<head>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
+<meta charset='utf-8'>
+<meta content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' name='viewport'>
+<script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js'></script>
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css' rel='stylesheet'>
+<title>Word Search Gem</title>
+<link href="images/search.png" rel="icon" type="image/png" />
+<link href="//fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" /><link href="//fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" /><link href="stylesheets/site.css" rel="stylesheet" />
+<script src="//use.fontawesome.com/1118bc452f.js"></script><script src="javascripts/all.js"></script>
+</head>
+<body class='index'>
+<div class='fork'>
+<div class='block'>
+<a href="https://github.com/npezza93/word_search"><i class='fa fa-github'></i>
+Fork on GitHub
+</a></div>
+</div>
+<div class='container'>
+<h1 class='center'>Word Search</h1>
+<h4 class='center'>
+Easily create a 2D and 3D word searches of any size given a csv of words
+</h4>
+<br>
+<br>
+<h3>
+Install
+</h3>
+<p>
+Add word_search to your Gemfile and bundle install:
+<pre><code>gem "word_search"</code></pre>
+<p>
+Alternatively, you can install the gem from rubygems.org and require it in your script:
+</p>
+<pre><code>gem install word_search</code></pre>
+</p>
+<br>
+<br>
+<h3>
+Quick Start
+</h3>
+<p>
+Using the supplied Generator class you can be up and running in a couple lines:
+<pre><code>require "word_search"&#x000A;&#x000A;# You can also add another param, z, to get a 3D word search&#x000A;generator = WordSearch::Generator.new("words.csv", 5, 5)&#x000A;# Calling #perform will place the words and fill the empty spots&#x000A;# with random letters&#x000A;generator.perform&#x000A;# Call #print to write the word search to a file&#x000A;generator.print("word_search")&#x000A;</code></pre>
+</p>
+<br>
+<br>
+<h3>
+Plane
+</h3>
+<p>
+You can load up a word search from a file and have access to a couple
+helpful utilites
+</p>
+<pre><code>require "word_search"&#x000A;&#x000A;plane = WordSearch::Plane.make_from_file("word_search")&#x000A;# To find the max of x or y&#x000A;plane.x&#x000A;=> 5&#x000A;plane.y&#x000A;=> 5&#x000A;# When a plane is generated, all positions by letter are&#x000A;# cataloged into a hash for quick searching.&#x000A;plane.catalog&#x000A;=> {"j"=> [Point @letter="j", @x=0, @y=0>],&#x000A;    "r"=> [Point @letter="r", @x=1, @y=0>]}&#x000A;# To get all possible traversable directions around a point&#x000A;plane.directions.to_h&#x000A;=> { N: [0, 1], NE: [1, 1], E: [1, 0], SE: [1, -1], S: [0, -1],&#x000A;     SW: [-1, -1], W: [-1, 0], NW: [-1, 1] }&#x000A;# To print the plane to the screen&#x000A;plane.pto_s&#x000A;nvqgy&#x000A;uhsit&#x000A;zqloh&#x000A;muudd&#x000A;himyj&#x000A;</code></pre>
+<br>
+<br>
+<h3>
+Solver
+</h3>
+<p>
+You can benchmark and check if your solution works by using the Solver class.
+Your script should be an executable ruby script that writes the location
+of each letter to a file in the following format and returns the file path.
+It should also be able to accept command line arguments for the plane file
+and the words file, in that order.
+<pre>h [4, 9]&#x000A;e [5, 9]&#x000A;l [6, 9]&#x000A;l [7, 9]&#x000A;o [8, 9]&#x000A;---&#x000A;b [6, 8]&#x000A;y [7, 7]&#x000A;e [8, 6]</pre>
+</p>
+<pre><code>require "word_search"&#x000A;&#x000A;plane = WordSearch::Solver.new(&#x000A;  "path/to/script", "path/to/word/bank", "path/to/word/search"&#x000A;)&#x000A;solver.perform&#x000A;=> Benchmark::Tms:0x007fd722cc6b58 @cstime=0.07,&#x000A;    @cutime=0.44, @label="", @real=0.5259899999946356,&#x000A;    @stime=0.0, @total=0.51, @utime=0.0&#x000A;# If your script fails or is incorrect a message will appear instead&#x000A;# of the benchmark.&#x000A;</code></pre>
+</div>
+<div id='np_logo_container'>
+<a href="https://github.com/npezza93" class="social-container"><i class='fa fa-github'></i>
+</a><img src="images/logo.png" id="np_logo" alt="Logo" />
+<a href="https://www.linkedin.com/in/nick-pezza-02166668" class="social-container"><i class='fa fa-linkedin'></i>
+</a></div>
+
+</body>
 </html>
