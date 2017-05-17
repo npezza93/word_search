@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
 require "pathname"
 require "fileutils"
 include FileUtils
@@ -12,7 +13,7 @@ def system!(*args)
 end
 
 chdir APP_ROOT do
-  system! "rspec"
+  system! "bundle exec rspec"
 
   puts "\nChecking rubocop\n"
   system! "bundle exec rubocop"
