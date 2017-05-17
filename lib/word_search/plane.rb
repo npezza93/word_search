@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module WordSearch
   class Plane < SimpleDelegator
     def self.make_from_file(file, should_catalog: true)

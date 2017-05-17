@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 ###
 # Page options, layouts, aliases and proxies
 ###

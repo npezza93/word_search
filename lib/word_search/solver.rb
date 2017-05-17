@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module WordSearch
   class Solver
     attr_accessor :script, :word_bank, :plane, :failed, :benchmark,

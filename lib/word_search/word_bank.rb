@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module WordSearch
   class WordBank < Array
     include ActiveModel::Validations
