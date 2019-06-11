@@ -7,20 +7,21 @@ module WordSearch
     validate :word_bank
 
     def initialize(file)
-      return invalid_file unless valid_file?(file)
-      words = []
+      if valid_file?(file)
+        words = []
 
-      CSV.foreach(file) do |row|
-        row.each do |word|
-          words << word.strip.downcase if word.strip.length > 1
+        CSV.foreach(file) do |row|
+          words += valid_words_in_row(row)
         end
-      end
 
-      super words.uniq
+        super words.uniq
+      else
+        invalid_file
+      end
     end
 
     def longest_length
-      @longest ||= collect(&:length).max.to_i
+      @longest_length ||= collect(&:length).max.to_i
     end
 
     def longest_words
@@ -42,6 +43,14 @@ module WordSearch
     def invalid_file
       errors.add(:file, "is invalid")
       false
+    end
+
+    def valid_words_in_row(row)
+      row.map do |word|
+        next if word.strip.length < 2
+
+        word.strip.downcase
+      end.compact
     end
   end
 end
